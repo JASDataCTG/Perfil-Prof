@@ -1,0 +1,8 @@
+{
+  "name": "Academic.io - Jairo Acosta Solano",
+  "description": "Portal profesional de Jairo Acosta Solano, Data Scientist, Full Stack Developer y experto en e-learning y finanzas.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
