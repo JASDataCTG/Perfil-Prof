@@ -14,32 +14,95 @@ import ProfileView from './views/ProfileView';
 
 export type ViewType = 'home' | 'papers' | 'profile' | 'code';
 
-const PUBLICATIONS: Publication[] = [
+export const PUBLICATIONS: Publication[] = [
   {
     id: '1',
-    journal: 'Investigación Empresarial',
-    year: 2021,
-    title: 'Responsabilidad Social Empresarial como factor de competitividad',
-    description: 'Análisis del impacto de la RSE en la sostenibilidad y posicionamiento de las empresas en el mercado actual.',
-    views: '1.8k',
+    journal: 'Procedia Computer Science 198, 512-517',
+    year: 2022,
+    title: 'Predictive models assessment based on CRISP-DM methodology for students performance in Colombia - Saber 11 Test',
+    description: 'Evaluación de modelos predictivos para el rendimiento estudiantil utilizando la metodología CRISP-DM en el contexto de las pruebas de estado.',
+    views: '62 Citaciones',
     pdfUrl: '#'
   },
   {
     id: '2',
-    journal: 'Logística y Tecnología',
-    year: 2019,
-    title: 'Incidencia de las TIC en la competitividad de las PYMES del sector logístico de Cartagena',
-    description: 'Estudio sobre la transformación digital en pequeñas y medianas empresas dedicadas a la logística portuaria.',
-    views: '2.1k',
+    journal: 'Procedia Computer Science 198, 626-631',
+    year: 2022,
+    title: 'Design and Production of Educational Video Games for the Inclusion of Deaf Children',
+    description: 'Diseño y producción de videojuegos educativos enfocados en la inclusión de niños con discapacidad auditiva.',
+    views: '17 Citaciones',
     pdfUrl: '#'
   },
   {
     id: '3',
-    journal: 'Educación Virtual',
+    journal: 'Información tecnológica 29 (1), 11-18',
     year: 2018,
-    title: 'Implicaciones sociales y culturales del E-Learning',
-    description: 'Exploración de los desafíos y beneficios de la adopción de entornos virtuales de aprendizaje en comunidades diversas.',
-    views: '1.4k',
+    title: 'Prácticas de pruebas desde la industria de software. La plataforma asisto como caso de estudio',
+    description: 'Análisis de prácticas de QA y testing en plataformas industriales aplicadas a entornos académicos.',
+    views: '17 Citaciones',
+    pdfUrl: '#'
+  },
+  {
+    id: '4',
+    journal: 'Revista Ingeniería e Innovación 6 (2), 13',
+    year: 2018,
+    title: 'Innovaciones Tecnológicas Para Inclusión Educativa De Estudiantes Sordos',
+    description: 'Exploración de herramientas tecnológicas innovadoras para facilitar el aprendizaje de estudiantes sordos.',
+    views: '9 Citaciones',
+    pdfUrl: '#'
+  },
+  {
+    id: '5',
+    journal: 'Teknos revista científica 16 (2), 102-116',
+    year: 2016,
+    title: 'Modelo para la formación de profesores en y para la diversidad',
+    description: 'Propuesta pedagógica para capacitar docentes en entornos educativos inclusivos y diversos.',
+    views: '3 Citaciones',
+    pdfUrl: '#'
+  },
+  {
+    id: '6',
+    journal: 'Ustasalud 23 (2)',
+    year: 2024,
+    title: 'Desarrollo de un aplicativo web para el aprendizaje en salud sexual y reproductiva para universitarios',
+    description: 'Plataforma interactiva para la educación en salud sexual orientada a la población universitaria joven.',
+    views: 'Nueva',
+    pdfUrl: '#'
+  },
+  {
+    id: '7',
+    journal: 'Corporación Universitaria Rafael Núñez',
+    year: 2023,
+    title: 'Validación de un modelo de regresión para evaluar la efectividad de la radiación solar',
+    description: 'Estudio sobre la eficiencia de producción energética basado en modelos estadísticos de radiación solar.',
+    views: 'Reciente',
+    pdfUrl: '#'
+  },
+  {
+    id: '8',
+    journal: 'Universidad Internacional de la Rioja',
+    year: 2021,
+    title: 'Metodología CRISP-DM para la evaluación de modelos predictivos del rendimiento de los estudiantes',
+    description: 'Implementación del estándar industrial CRISP-DM en la analítica de datos educativos regionales.',
+    views: 'Destacado',
+    pdfUrl: '#'
+  },
+  {
+    id: '9',
+    journal: 'Revista Méthodos 8 (1)',
+    year: 2010,
+    title: 'E-LEARNING: UNA NUEVA FORMA DE ORGANIZACIÓN EDUCATIVA',
+    description: 'Análisis temprano sobre la reestructuración de modelos institucionales para la educación virtual.',
+    views: 'Clásico',
+    pdfUrl: '#'
+  },
+  {
+    id: '10',
+    journal: 'Aglala 2 (1)',
+    year: 2011,
+    title: 'Incidencia de las tic’s en la competitividad de las pymes del sector logístico de Cartagena',
+    description: 'Investigación sobre el impacto tecnológico en la competitividad portuaria y logística regional.',
+    views: 'Fundamental',
     pdfUrl: '#'
   }
 ];
@@ -108,7 +171,7 @@ const App: React.FC = () => {
                 <button onClick={() => setCurrentView('papers')} className="text-sm font-semibold text-primary hover:underline">Ver todas</button>
               </div>
               <div className="grid grid-cols-1 gap-4">
-                {PUBLICATIONS.slice(0, 2).map(pub => (
+                {PUBLICATIONS.slice(0, 3).map(pub => (
                   <PublicationCard key={pub.id} publication={pub} />
                 ))}
               </div>
@@ -157,7 +220,6 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
 
-      {/* Desktop Navigation */}
       <nav className="hidden md:flex fixed left-8 top-1/2 -translate-y-1/2 flex-col gap-8 bg-white/80 ios-blur p-4 rounded-full shadow-lg border border-slate-100">
          <NavItem icon="home" label="Inicio" active={currentView === 'home'} onClick={() => setCurrentView('home')} />
          <NavItem icon="history_edu" label="Papers" active={currentView === 'papers'} onClick={() => setCurrentView('papers')} />
