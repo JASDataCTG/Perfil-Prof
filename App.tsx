@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Publication, Project, FilterType } from './types';
+import { Publication, Project, FilterType, GitHubRepo } from './types';
 import ProfileHeader from './components/ProfileHeader';
 import StatsSection from './components/StatsSection';
 import ResearchFilter from './components/ResearchFilter';
@@ -11,6 +11,7 @@ import BottomNav from './components/BottomNav';
 import AIInsightsPanel from './components/AIInsightsPanel';
 import PapersView from './views/PapersView';
 import ProfileView from './views/ProfileView';
+import CodeView from './views/CodeView';
 
 export type ViewType = 'home' | 'papers' | 'profile' | 'code';
 
@@ -59,51 +60,59 @@ export const PUBLICATIONS: Publication[] = [
     description: 'Propuesta pedagógica para capacitar docentes en entornos educativos inclusivos y diversos.',
     views: '3 Citaciones',
     pdfUrl: '#'
+  }
+];
+
+export const GITHUB_REPOS: GitHubRepo[] = [
+  {
+    id: 'repo-1',
+    name: 'crisp-dm-predictive-model',
+    description: 'Implementación del modelo predictivo basado en la metodología CRISP-DM para pruebas Saber 11.',
+    language: 'Python',
+    stars: 12,
+    forks: 5,
+    url: 'https://github.com/jacostasolano',
+    tags: ['Machine Learning', 'Data Science', 'Pandas']
   },
   {
-    id: '6',
-    journal: 'Ustasalud 23 (2)',
-    year: 2024,
-    title: 'Desarrollo de un aplicativo web para el aprendizaje en salud sexual y reproductiva para universitarios',
-    description: 'Plataforma interactiva para la educación en salud sexual orientada a la población universitaria joven.',
-    views: 'Nueva',
-    pdfUrl: '#'
+    id: 'repo-2',
+    name: 'asisto-automated-testing',
+    description: 'Suite de pruebas automatizadas para la plataforma académica ASISTO utilizando Selenium y Python.',
+    language: 'Python',
+    stars: 8,
+    forks: 2,
+    url: 'https://github.com/jacostasolano',
+    tags: ['QA', 'Testing', 'Selenium']
   },
   {
-    id: '7',
-    journal: 'Corporación Universitaria Rafael Núñez',
-    year: 2023,
-    title: 'Validación de un modelo de regresión para evaluar la efectividad de la radiación solar',
-    description: 'Estudio sobre la eficiencia de producción energética basado en modelos estadísticos de radiación solar.',
-    views: 'Reciente',
-    pdfUrl: '#'
+    id: 'repo-3',
+    name: 'inclusion-games-engine',
+    description: 'Motor base para videojuegos educativos inclusivos diseñados para niños con discapacidad auditiva.',
+    language: 'TypeScript',
+    stars: 15,
+    forks: 4,
+    url: 'https://github.com/jacostasolano',
+    tags: ['React', 'Education', 'Accessibility']
   },
   {
-    id: '8',
-    journal: 'Universidad Internacional de la Rioja',
-    year: 2021,
-    title: 'Metodología CRISP-DM para la evaluación de modelos predictivos del rendimiento de los estudiantes',
-    description: 'Implementación del estándar industrial CRISP-DM en la analítica de datos educativos regionales.',
-    views: 'Destacado',
-    pdfUrl: '#'
+    id: 'repo-4',
+    name: 'market-intelligence-dashboard',
+    description: 'Dashboard de inteligencia de mercado para el sector logístico en Cartagena.',
+    language: 'JavaScript',
+    stars: 10,
+    forks: 3,
+    url: 'https://github.com/jacostasolano',
+    tags: ['Data Viz', 'D3.js', 'Logistics']
   },
   {
-    id: '9',
-    journal: 'Revista Méthodos 8 (1)',
-    year: 2010,
-    title: 'E-LEARNING: UNA NUEVA FORMA DE ORGANIZACIÓN EDUCATIVA',
-    description: 'Análisis temprano sobre la reestructuración de modelos institucionales para la educación virtual.',
-    views: 'Clásico',
-    pdfUrl: '#'
-  },
-  {
-    id: '10',
-    journal: 'Aglala 2 (1)',
-    year: 2011,
-    title: 'Incidencia de las tic’s en la competitividad de las pymes del sector logístico de Cartagena',
-    description: 'Investigación sobre el impacto tecnológico en la competitividad portuaria y logística regional.',
-    views: 'Fundamental',
-    pdfUrl: '#'
+    id: 'repo-5',
+    name: 'solar-regression-validator',
+    description: 'Scripts de validación para modelos de regresión aplicados a datos de radiación solar.',
+    language: 'R',
+    stars: 5,
+    forks: 1,
+    url: 'https://github.com/jacostasolano',
+    tags: ['Statistics', 'Energy', 'R-Lang']
   }
 ];
 
@@ -147,6 +156,8 @@ const App: React.FC = () => {
         return <PapersView publications={PUBLICATIONS} />;
       case 'profile':
         return <ProfileView />;
+      case 'code':
+        return <CodeView repos={GITHUB_REPOS} />;
       case 'home':
       default:
         return (
